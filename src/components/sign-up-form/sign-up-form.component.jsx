@@ -8,7 +8,8 @@ const defaultFormFields = {
     displayName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    required: true
 }
 
 const SignUpForm = () => {
@@ -54,51 +55,41 @@ const handleChange = (event) => {
 
                 <FormInput
                     label="Display Name"
-                    inputOptions = {{
-                    type: "text",
-                    required: true, 
-                    onChange: handleChange, 
-                    name: "displayName", 
-                    value: displayName 
-                    }}
+                    type = "text" 
+                    onChange = {handleChange} 
+                    name = "displayName"
+                    value = {displayName}
+                    required
                 />
 
                 <FormInput
                 label = "Email"
-                inputOptions = {{
-                    type: "email", 
-                    required: true, 
-                    onChange: handleChange, 
-                    name: "email", 
-                    value: email
-                }}
+                type = "email"  
+                onChange = {handleChange} 
+                name = "email" 
+                value = {email}
+                required
                 />
 
                 <FormInput
                 label = "Password"
-                inputOptions = {{
-                    label: "Password",
-                    type: "password", 
-                    required: true, 
-                    onChange: handleChange, 
-                    name: "password", 
-                    value: password
-                }}
+                type = "password"  
+                onChange = {handleChange}
+                name = "password" 
+                value = {password}
+                required
                 />
 
                 <FormInput
                 label = "Conform Password"
-                inputOptions = {{
-                    label: "Confirm Password",
-                    type: "password", 
-                    required: true, 
-                    onChange: handleChange, 
-                    name: "confirmPassword", 
-                    value: confirmPassword
-                }}
+                type = "password" 
+                onChange = {handleChange} 
+                name = "confirmPassword"
+                value = {confirmPassword}
+                required
                 />
 
-                <Button buttonType="default" type="submit">Sign Up</Button>
+                <Button buttonType="default" type="submit" onClick={handleSubmit}>Sign Up</Button>
 
             </form>
         </div>
