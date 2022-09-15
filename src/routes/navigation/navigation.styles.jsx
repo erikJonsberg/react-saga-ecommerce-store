@@ -1,29 +1,36 @@
-.navigation {
+import styled from 'styled-components';
+import {Link} from 'react-router-dom'
+
+
+export const NavigationContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 40px 10px;
+`
 
-  .logo-container {
+
+
+  export const LogoContainer = styled(Link)`
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    //width: 70px;
-    //padding: 25px;
-  }
+    `
 
-  .nav-links-container {
+   export const NavLinks = styled.div`
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    `
 
-    .nav-link {
+  
+
+    export const NavLink = styled(Link)`
       padding: 10px 15px;
       cursor: pointer;
-    }
-  }
-}
+      `
+
