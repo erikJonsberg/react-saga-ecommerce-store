@@ -91,7 +91,7 @@ export const CartProvider = ({children}) => {
              );
          
 
-         const newCartTotal = cartItems.reduce(
+         const newCartTotal = newCartItems.reduce(
              (total, cartItem) => total + cartItem.quantity * cartItem.price, 
              0
              );
