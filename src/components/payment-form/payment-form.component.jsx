@@ -1,3 +1,4 @@
+
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
@@ -22,7 +23,9 @@ const PaymentForm = () => {
             },
             body: JSON.stringify({ amount: 10000})
 
-            }).then(res => res.json());
+            }).then((res) => {
+                return res.json();
+            });
 
             console.log(response);
         };
