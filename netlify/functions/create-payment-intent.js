@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
 
 exports.handler = async (event) => {
     try {
@@ -16,7 +16,7 @@ exports.handler = async (event) => {
             statusCode: 200,
             body: JSON.stringify({ paymentIntent })
         };
-    } catch (err0r) {
+    } catch (error) {
         console.log({ error });
 
         return {

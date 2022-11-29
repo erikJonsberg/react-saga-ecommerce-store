@@ -1,4 +1,5 @@
 
+
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
@@ -16,16 +17,14 @@ const PaymentForm = () => {
             return;
         }
 
-        const response = await fetch('/.netlify/functions/create-payment-intent', { 
+        const response = await fetch('/.netlify/functions/create-payment-intent.js', { 
             method: 'post',
             headers: { 
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ amount: 10000})
 
-            }).then((res) => {
-                return res.json();
-            });
+            }).then(res => res.json());
 
             console.log(response);
         };
