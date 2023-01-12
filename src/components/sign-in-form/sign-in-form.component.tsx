@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import FormInput from '../form-input/form-input.component';
 import {SignInContainer, ButtonsContainer} from './sign-in-form.styles';
 import Button, {BUTTON_TYPE_CLASSES} from '../button/button.component';
+import { AuthError, AuthErrorCodes } from 'firebase/auth';
 
 import { googleSignInStart, emailSignInStart } from '../../store/user/user.action'
 
@@ -25,18 +26,18 @@ const resetFormFields = () => {
         dispatch(googleSignInStart());
     }
 
-const handleSubmit = async (event) => {
+const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
     dispatch(emailSignInStart(email, password));
     resetFormFields();
 } catch(error) {
-    switch (error.code) {
-        case 'auth/wrong-password':
+    switch ((error as AuthError).code) {
+        case AuthErrorCodes.INVALID_PASSWORD:
             alert('Incorrect password for email');
             break;
-        case 'auth/user-not-found':
+        case AuthErrorCodes.USER_DELETED:
             alert('User not found');
             break;
             default:
@@ -45,7 +46,7 @@ const handleSubmit = async (event) => {
 }
 };
 
-const handleChange = (event) => {
+const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const {name,value} = event.target;
 
     setFormFields({...formFields, [name]: value});
@@ -55,7 +56,7 @@ const handleChange = (event) => {
         <SignInContainer>
         <h2>Already have an account?</h2>
             <span>Sign in with your email and password</span>
-            <form onSubmit={()=>{}}>
+            <form onSubmit={handleSubmit}>
 
                 <FormInput
                 label = "Email"
@@ -75,8 +76,17 @@ const handleChange = (event) => {
                 required
                 />
                 <ButtonsContainer>
-                    <Button buttonType={BUTTON_TYPE_CLASSES.default} type="submit" onClick={handleSubmit}>Sign In</Button>
-                    <Button type='button' buttonType={BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}>Google Sign In</Button>
+                    <Button 
+                        buttonType={BUTTON_TYPE_CLASSES.base}
+                        type="submit">
+                        Sign In
+                    </Button>
+                    <Button 
+                        type='button' 
+                        buttonType={BUTTON_TYPE_CLASSES.google} 
+                        onClick={signInWithGoogle}>
+                        Google Sign In
+                    </Button>
                 </ButtonsContainer>
             </form>
         </SignInContainer>
