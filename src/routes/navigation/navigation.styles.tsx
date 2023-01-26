@@ -8,6 +8,10 @@ export const NavigationContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 40px 10px;
+
+  @media screen and (max-width: 768px) {
+        padding:1rem;
+    }
 `
 
 
@@ -17,6 +21,10 @@ export const NavigationContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 768px) {
+        justify-content: flex-start;
+    }
     `
 
    export const NavLinks = styled.div`
@@ -25,6 +33,10 @@ export const NavigationContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 768px) {
+        width:100%;
+    }
     `
 
   

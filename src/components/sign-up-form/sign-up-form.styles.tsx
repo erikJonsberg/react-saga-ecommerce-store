@@ -9,5 +9,13 @@ export const SignUpContainer = styled.div`
     h2 {
     margin: 10px 0;
 }
+
+ @media screen and (max-width: 768px) {
+        width:100%;
+        flex-direction:column;
+        justify-content:center;
+        padding:.5rem;
+        margin-top:20px;
+      }
 `
 

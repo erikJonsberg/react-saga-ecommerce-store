@@ -36,6 +36,7 @@ const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     switch ((error as AuthError).code) {
         case AuthErrorCodes.INVALID_PASSWORD:
             alert('Incorrect password for email');
+            console.log('Incorrect password for email');
             break;
         case AuthErrorCodes.USER_DELETED:
             alert('User not found');
